@@ -73,6 +73,7 @@ const addproduct = async (req, res) => {
 
         //checking for duplicate title
         let checkTitle = await productModel.findOne({ title: data.title });
+        console.log(checkTitle)
         if (checkTitle) return res.status(409).send({ status: false, message: "Title already exist" });
 
         if (!description) return res.status(400).send({ status: false, message: "description is required." });
