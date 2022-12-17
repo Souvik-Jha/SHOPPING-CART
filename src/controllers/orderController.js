@@ -116,7 +116,7 @@ const updateOrder = async function (req, res) {
             return res.status(404).send({ status: false, message: `order is not for ${userId}, you cannot order it  ` })
         }
         
-        if(statusbody!="completed"&& statusbody!="cancled") return res.status(400).send({status:false,message:"statusbody should be cancled or completed"})
+        //if(statusbody!="completed"&& statusbody!="cancled") return res.status(400).send({status:false,message:"statusbody should be cancled or completed"})
         
         if (statusbody) {
             if (!(['completed', 'cancled'].includes(statusbody))) {

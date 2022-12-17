@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //------------------- Connection Establishment Between Application and Database -------------------//
 mongoose.connect("mongodb+srv://linagodbole99:dAix1EtU6C6yxJDR@cluster0.oip3eje.mongodb.net/group23Database",
-    { useNewUrlParser: true,})
+    { useNewUrlParser: true})
   .then(() => console.log("MongoDb is connected!"))
   .catch((err) => console.log(err));
 

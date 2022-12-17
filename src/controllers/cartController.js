@@ -106,10 +106,6 @@ const updateCart = async function (req, res) {
 
     if (!isValid(productId)) { return res.status(400).send({ status: false, msg: "Product Id is requried" }) }
 
-    //if (!(removeProduct)) { return res.status(400).send({ status: false, msg: "Remove product is requried" }) }
-
-    //  if(removeProduct )
-
     if (!mongoose.isValidObjectId(productId)) { return res.status(400).send({ status: false, msg: "Product Id is invalid" }) }
 
     if (!mongoose.isValidObjectId(cartId)) { return res.status(400).send({ status: false, msg: "Cart Id is invalid" }) }

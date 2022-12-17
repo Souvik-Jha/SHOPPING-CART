@@ -73,11 +73,10 @@ const addproduct = async (req, res) => {
 
         //checking for duplicate title
         let checkTitle = await productModel.findOne({ title: data.title });
-        console.log(checkTitle)
         if (checkTitle) return res.status(409).send({ status: false, message: "Title already exist" });
 
         if (!description) return res.status(400).send({ status: false, message: "description is required." });
-        if (!(isValid(description) || isValidString(description))) return res.status(400).send({ status: false, message: "description is required." });
+        if (!(isValid(description))) return res.status(400).send({ status: false, message: "description is required." });
 
         if (!price) return res.status(400).send({ status: false, message: "price is required." });
         if (!isValidPrice(price)) return res.status(400).send({ status: false, message: "price Should be in number only...!" });
@@ -202,6 +201,7 @@ const getByQuery = async function (req, res) {
         if (query.priceGreaterThan) {
             greate['price'] = { $gt: parseInt(query['priceGreaterThan']) }
         }
+        console.log(query)
         let allProducts = await productModel.find({ $and: [query, { isDeleted: false }, less, greate] }).sort({ "price": query['priceSort'] })
         if (allProducts.length == 0) return res.status(404).send({ status: false, message: "no such Product" })
 
